@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./css/style.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <section class="main">
+        <table class="base">
+            <tbody>
+                <tr>
+                    <th>Метод</th>
+                    <th>URL</th>
+                    <th>Действие</th>
+                    <th>Комментарий</th>
+                </tr>
+                <tr>
+                    <td><strong>POST</strong></td>
+                    <td><a href="/api/user/login">/api/user/login</a></td>
+                    <td>авторизация пользователя</td>
+                    <td>метод всегда возвращает Code: 201 и статичный объект: { id: 1, mail: "test@mail.ru" }</td>
+                </tr>
+                <tr>
+                    <td><strong>GET</strong></td>
+                    <td><a href="/api/books">/api/books</a></td>
+                    <td>получить все книги</td>
+                    <td>получаем массив всех книг</td>
+                </tr>
+                <tr>
+                    <td><strong>GET</strong></td>
+                    <td><a href="/api/books/:id">/api/books/:id</a></td>
+                    <td>получить книгу по ID</td>
+                    <td>получаем объект книги, если запись не найдена, вернём Code: 404</td>
+                </tr>
+                <tr>
+                    <td><strong>POST</strong></td>
+                    <td><a href="/api/books">/api/books</a></td>
+                    <td>создать книгу</td>
+                    <td>создаём книгу и возвращаем её же вместе с присвоенным ID</td>
+                </tr>
+                <tr>
+                    <td><strong>PUT</strong></td>
+                    <td><a href="/api/books">/api/books/:id</a></td>
+                    <td>редактировать книгу по ID</td>
+                    <td>редактируем объект книги, если запись не найдена, вернём Code: 404</td>
+                </tr>
+                <tr>
+                    <td><strong>DELETE</strong></td>
+                    <td><a href="/api/books">/api/books/:id</a></td>
+                    <td>удалить книгу по ID</td>
+                    <td>удаляем книгу и возвращаем ответ: 'ok'</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
