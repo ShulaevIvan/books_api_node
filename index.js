@@ -17,10 +17,16 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/books/', async (request, response) => {
-    const books = await database.getBooks();
+    try {
+        const books = await database.getBooks();
 
-    response.status(200);
-    response.json(books);
+        response.status(200);
+        response.json(books);
+    }
+    catch(err) {
+        response.send(err);
+    }
+   
 });
 
 app.get('/api/books/:id', async (request, response) => {
@@ -28,7 +34,7 @@ app.get('/api/books/:id', async (request, response) => {
     const targetBook = await database.getBooks(many=false, targetId);
 
     try {
-        if (targetBook) {
+        if(targetBook) {
             response.status(200);
             response.json(targetBook);
             return;
@@ -70,7 +76,7 @@ app.put('/api/books/:id', async (request, response) => {
     const targetBook = await database.editBook(targetId, data);
 
     try {
-        if (targetBook) {
+        if(targetBook) {
             response.status(201);
             response.json(targetBook);
             return;

@@ -65,6 +65,4 @@ class Database {
 const data = [];
 
 
-
-
 module.exports = new Database(data);
