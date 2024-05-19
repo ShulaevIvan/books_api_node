@@ -26,6 +26,13 @@
 `PUT` | `/api/books/:id` | редактировать книгу по **ID** | редактируем объект книги, если запись не найдена, вернём **Code: 404**
 `DELETE` | `/api/books/:id` | удалить книгу по **ID** | удаляем книгу и возвращаем ответ: **'ok'**
 
+### Установка и запуск
+```
+npm install
+
+npm start
+```
+
 Зависимости:
 * [express](https://www.npmjs.com/package/body-parser).
 * [body-parser](https://www.npmjs.com/package/body-parser).
