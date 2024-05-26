@@ -36,4 +36,5 @@ npm start
 Зависимости:
 * [express](https://www.npmjs.com/package/body-parser).
 * [body-parser](https://www.npmjs.com/package/body-parser).
+* [multer](https://www.npmjs.com/package/multer).
 * [uuid](https://www.npmjs.com/package/uuid).

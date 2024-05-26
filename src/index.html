@@ -35,6 +35,11 @@
                     <td>получаем объект книги, если запись не найдена, вернём Code: 404</td>
                 </tr>
                 <tr>
+                    <td><strong>GET</strong></td>
+                    <td><a href="/api/books/:id/download">/api/books/:id/download</a></td>
+                    <td> Метод отдаёт на скачиваение файл книги по её :id</td>
+                </tr>
+                <tr>
                     <td><strong>POST</strong></td>
                     <td><a href="/api/books">/api/books</a></td>
                     <td>создать книгу</td>
@@ -52,6 +57,7 @@
                     <td>удалить книгу по ID</td>
                     <td>удаляем книгу и возвращаем ответ: 'ok'</td>
                 </tr>
+                
             </tbody>
         </table>
     </section>
