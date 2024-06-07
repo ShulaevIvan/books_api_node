@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const uploadMiddleware = require('../middleware/bookFileLoad.js');
 const database = require('../database.js');
+const fs = require('fs');
 
 router.get('/', async (request, response) => {
     try {
@@ -40,9 +41,9 @@ router.get('/:id/download', async (request, response) => {
     try {
         const targetId = request.params.id;
         const targetBookImage = database.downloadBookImage(targetId);
-        if(targetBookImage) {
+        if(targetBookImage && fs.existsSync(targetBookImage)) {
             response.status(200);
-            response.json(targetBookImage);
+            response.download(targetBookImage);
             return;
         }
         response.status(404);

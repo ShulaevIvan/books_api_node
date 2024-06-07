@@ -2,6 +2,7 @@
 const { v4: uuid } = require('uuid');
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
 const PORT = process.env.PORT || 3000;
 const HOST = os.networkInterfaces().lo[0].address;
 
@@ -73,8 +74,10 @@ class Database {
 
     downloadBookImage(id) {
         const targetImage = this.bookStore.filter((item) => item.id === id);
-        if (!targetImage) return null;
-        if (targetImage.length > 0) return `http://${HOST}:${PORT}/${targetImage[0].fileBook.replace(/src\//, '')}`
+        if (!targetImage || targetImage.length < 0) return null;
+        const filePath = __dirname + `/src/images/${targetImage[0].fileBook.match(/\/([^\/]+)\/?$/)[1]}`;
+        
+        return filePath;
     }
 
     deleteBookImage(bookItem) {
