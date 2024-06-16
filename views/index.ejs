@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include ('includes/head') %>
+
+    <!-- "id": "52ae3643-b4be-4b0e-ba58-c9e525be005d",
+    "title": "test",
+    "description": "test",
+    "authors": "set",
+    "favorite": "set",
+    "fileCover": "set",
+    "fileName": "et",
+    "fileBook": "src/images/1718553888208-1 (1).png" -->
+<body>
+    <section class="main">
+        <div class="container">
+            <div class="books-row">
+                <% if (books.length === 0) { %>
+                    <div>Книг пока нет, <a href="#">добвьте</a> одну</div>
+                <% }%>
+                <% books.forEach((item) => { %>
+                    <div class="book-item">
+                        <div class="book-title">
+                            <h3> <%- item.title %></h3>
+                        </div>
+                        <div class="book-img-wrap">
+                            <img src=<%- item.fileBook %>  alt="test"/>
+                        </div>
+                        <div class="book-description">
+                            <p><%- item.description %> </p>
+                        </div>
+                        <div class="book-controls">
+                            <button>Info</button>
+                        </div>
+                    </div>
+                <% }) %>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

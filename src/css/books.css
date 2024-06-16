@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 1230px;
+    width: 100%;
+}
+.books-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1024px;
+    min-width: 400px;
+    border: 1px solid black;
+}
+.books-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.book-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 1px solid;
+    padding: 20px;
+    width: 28%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
