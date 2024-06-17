@@ -1,10 +1,4 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    max-width: 1230px;
-    width: 100%;
-}
+
 .books-wrap {
     display: flex;
     flex-direction: column;
@@ -26,10 +20,80 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     border: 1px solid;
     padding: 20px;
     width: 28%;
-    max-width: 400px;
+    max-width: 300px;
     margin-bottom: 20px;
-    margin-right: 10px;
+    margin-right: 20px;
+}
+.book-img-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.book-item img {
+    max-width: 100%;
+}
+.book-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.book-controls a {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    min-width: 100px;
+    margin-right: 20px;
+    text-align: center;
+    justify-content: center;
+}
+.book-description p {
+    text-align: center;
+    padding: 10px;
+}
+.main {
+    margin-top: 10%;
+}
+.book-preview {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.book-preview-item {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 400px;
+    border: 1px solid;
+    padding: 20px;
+}
+.book-preview-img-wrap {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.book-preview-img-wrap img {
+    max-width: 100%;
+}
+.book-preview-description {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 400px;
+    padding: 10px;
 }

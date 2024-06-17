@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/src/'));
-app.use('images', express.static(__dirname + '/src/images/'));
+app.use(express.static(__dirname + '/src/images/'));
 app.use('/', indexRouter);
 app.use('/api/books', booksRouter);
 app.use('/api/user', userRouter);

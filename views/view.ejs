@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('includes/header', {'title': `ViewBook id ${book.id}` }) %>
+
+<div class="container">
+    <div class="book-preview">
+        <div class="book-preview-item">
+            <div class="favorite-block">
+                <span>Favorite: <%= book.favorite %></span>
+            </div>
+            <div class="book-preview-head">
+                <h1><%= book.title %></h1>
+                <h5>id <%= book.id %></h5>
+                <h3>authors: <%= book.authors %></h5>
+            </div>
+            <div class="book-preview-info">
+                
+            </div>
+            <div class="book-preview-img-wrap">
+                <img src='<%= book.fileName %>' alt="test"/>
+            </div>
+            <div class="book-preview-description">
+                <p><%= book.description %></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<%- include ('includes/footer') %>

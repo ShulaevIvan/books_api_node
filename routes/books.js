@@ -56,9 +56,9 @@ router.get('/:id/download', async (request, response) => {
 
 router.post('/', uploadMiddleware.single('fileBook'), async (request, response) => {
     const data = request.body;
-    
     try {
         data.fileBook = request.file ? request.file.path : 'src/images/book_holder.png';
+        data.fileName = request.file ? request.file.filename : 'book_holder.png';
         const createdBook = database.createBook(data);
         response.status(201);
         response.json(createdBook);
