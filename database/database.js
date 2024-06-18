@@ -2,9 +2,6 @@
 const { v4: uuid } = require('uuid');
 const fs = require('fs');
 const os = require('os');
-const path = require('path');
-const PORT = process.env.PORT || 3000;
-const HOST = os.networkInterfaces().lo[0].address;
 
 class Database {
     constructor(store) {

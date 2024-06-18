@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include ('includes/header', {'title': `ViewBook id ${book.id}` }) %>
+<% if (book) { %>
+<%- include ('../includes/head', {'title': `ViewBook id ${book.id}` }) %>
 
 <div class="container">
     <div class="book-preview">
@@ -17,7 +18,7 @@
                 
             </div>
             <div class="book-preview-img-wrap">
-                <img src='<%= book.fileName %>' alt="test"/>
+                <img src='/<%= book.fileName %>' alt="test"/>
             </div>
             <div class="book-preview-description">
                 <p><%= book.description %></p>
@@ -27,4 +28,6 @@
 
 </div>
 
-<%- include ('includes/footer') %>
+<% }%>
+
+<%- include ('../includes/footer') %>

@@ -1,29 +1,23 @@
-require('dotenv').config();
-
 const express = require('express');
+const multer  = require("multer");
 const os = require('os');
 const path = require('path');
-
-const indexRouter = require('./routes/index.js');
-const booksRouter = require('./routes/books.js');
-const userRouter = require('./routes/user.js');
-
-
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const HOST = os.networkInterfaces().lo[0].address;
-const app = express();
+const indexRouter = require('./routes/index');
+const booksRouter = require('./routes/books');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/src/'));
-app.use(express.static(__dirname + '/src/images/'));
-app.use('/', indexRouter);
-app.use('/api/books', booksRouter);
-app.use('/api/user', userRouter);
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/uploads/')));
+app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use('/', indexRouter);
+app.use('/', booksRouter);
 app.listen(PORT);
 console.log(`server started at: \n http://${HOST}:${PORT} \n http://localhost:${PORT}`);
-
-
