@@ -6,22 +6,28 @@
 <div class="container">
     <div class="book-preview">
         <div class="book-preview-item">
+            <div class="download-wrap">
+                <a href="/<%= book.id %>/download">Download</a>
+            </div>
+
             <div class="favorite-block">
                 <span>Favorite: <%= book.favorite %></span>
             </div>
-            <div class="book-preview-head">
-                <h1><%= book.title %></h1>
-                <h5>id <%= book.id %></h5>
-                <h3>authors: <%= book.authors %></h5>
+
+            <div class="book-preview-item-base-info">
+                <ul>
+                    <li>id: <%= book.id %></li>
+                    <li>title: <%= book.title %></li>
+                    <li>authors: <%= book.authors %></li>
+                    <li>file cover: <%= book.fileCover %></li>
+                </ul>
             </div>
-            <div class="book-preview-info">
-                
-            </div>
+
             <div class="book-preview-img-wrap">
                 <img src='/<%= book.fileName %>' alt="test"/>
             </div>
             <div class="book-preview-description">
-                <p><%= book.description %></p>
+                <p>Description: <%= book.description %></p>
             </div>
         </div>
     </div>

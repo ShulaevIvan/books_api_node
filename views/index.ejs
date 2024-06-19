@@ -4,10 +4,13 @@
     <div class="container">
         <div class="books-row">
             <% if (books.length === 0) { %>
-                <div>There are no books yet , <a href="#">add</a> one</div>
+                <div>There are no books yet , <a href="/create">add</a> one</div>
             <% } else {%>
                 <% books.forEach((item) => { %>
                     <div class="book-item">
+                        <div class="download-wrap">
+                            <a href="/<%= item.id %>/download">Download</a>
+                        </div>
                         <div class="book-title">
                             <h3> <%- item.title %></h3>
                         </div>
@@ -19,7 +22,8 @@
                         </div>
                         <div class="book-controls">
                             <a href="/view/<%= item.id %>">Info</a>
-                            <a href="/update/<%= item.id %>">Edit Book</a>
+                            <a href="/update/<%= item.id %>">Edit</a>
+                            <a href="/delete/<%= item.id %>">Remove</a>
                         </div>
                     </div>
                 <% }) %>      

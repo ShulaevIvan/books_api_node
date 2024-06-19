@@ -1,3 +1,4 @@
+
 body {
     margin: 0 auto;
     display: flex;
@@ -5,6 +6,7 @@ body {
     min-height: 100vh;
     justify-content: center;
     align-items: center;
+    flex: 1 0 auto;
 }
 header {
     display: flex;
@@ -23,6 +25,10 @@ header {
     width: 100%;
     justify-content: center;
     align-items: center;
+}
+.main-menu {
+    margin: 0;
+    padding: 0;
 }
 nav {
     width: 100%;
@@ -128,17 +134,17 @@ table.base th {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 .book-controls a {
     display: flex;
     flex-direction: row;
     cursor: pointer;
-    min-width: 100px;
-    margin-right: 20px;
+    margin: 0 10px;
+    align-items: center;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between
 }
 .book-description p {
     text-align: center;
@@ -160,6 +166,7 @@ table.base th {
     flex-direction: column;
     flex-wrap: wrap;
     max-width: 400px;
+    width: 100%;
     border: 1px solid;
     padding: 20px;
 }
@@ -198,4 +205,21 @@ table.base th {
 .file-div{
     margin-top: 20px;
     margin-bottom: 40px;
+}
+.download-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+footer {
+    min-height: 200px;
+	flex: 0 0 auto;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    color: white;
+
 }

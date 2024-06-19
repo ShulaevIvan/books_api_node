@@ -2,6 +2,7 @@
 const { v4: uuid } = require('uuid');
 const fs = require('fs');
 const os = require('os');
+const path = require('path');
 
 class Database {
     constructor(store) {
@@ -32,7 +33,7 @@ class Database {
             favorite: data.favorite,
             fileCover: data.fileCover,
             fileName: data.fileName,
-            fileBook: data.fileBook ? data.fileBook : `${__dirname}/src/images/book_holder.png`
+            fileBook: data.fileBook ? data.fileBook : path.join(__dirname, '..', '/public/uploads/book_holder.png')
         };
         this.bookStore.push(book);
 
@@ -46,12 +47,12 @@ class Database {
                 return {
                     id: item.id,
                     title: data.title ? data.title : item.title,
-                    description: data.description ? data.title : item.title,
+                    description: data.description ? data.description : item.description,
                     authors: data.authors ? data.authors : item.authors,
                     favorite: data.favorite ? data.favorite: item.favorite,
                     fileCover: data.fileCover ? data.fileCover: item.fileCover,
-                    fileName: data.fileName ? data.fileName : item.fileName,
-                    fileBook: data.fileBook ? data.fileBook : `${__dirname}/src/images/book_holder.png` 
+                    fileName: data.fileBook ? data.fileBook.replace('public/uploads/', '') : item.fileName,
+                    fileBook: data.fileBook ? data.fileBook : `${__dirname}/public/uploads/book_holder.png` 
                 }
             }
             return item;
@@ -72,19 +73,18 @@ class Database {
     downloadBookImage(id) {
         const targetImage = this.bookStore.filter((item) => item.id === id);
         if (!targetImage || targetImage.length < 0) return null;
-        const filePath = __dirname + `/src/images/${targetImage[0].fileBook.match(/\/([^\/]+)\/?$/)[1]}`;
+        const filePath = path.join(__dirname, '..', `/public/uploads/${targetImage[0].fileBook.match(/\/([^\/]+)\/?$/)[1]}`);
         
         return filePath;
     }
 
     deleteBookImage(bookItem) {
-        if (bookItem && bookItem.fileBook !== `src/images/book_holder.png`) {
-            fs.unlink(`${__dirname}/${bookItem.fileBook}`, err => {
+        if (bookItem && bookItem.fileBook !== `public/uploads/book_holder.png`) {
+            fs.unlink(`${bookItem.fileBook}`, err => {
                 if(err) throw err;
             });
         }
     }
-    
 }
 
 const data = [];

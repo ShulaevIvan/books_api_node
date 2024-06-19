@@ -1,6 +1,6 @@
 <form 
-    method="POST" 
-    action="/create"
+    method="POST"
+    action="/update/<%= book.id %>"
     enctype="multipart/form-data"
     class="book-form"
 >
@@ -11,6 +11,7 @@
             name="title" 
             type="text" 
             placeholder="title"
+            value=<%= book.title %>
         />
     </div>
     <div class="book-from-item">
@@ -20,6 +21,7 @@
             name="description" 
             type="text" 
             placeholder="description"
+            value=<%= book.description %>
         />
     </div>
     <div class="book-from-item">
@@ -29,6 +31,7 @@
             name="authors"
             type="text" 
             placeholder="authors"
+            value=<%= book.authors %>
         />
     </div>
     <div class="book-from-item">
@@ -38,6 +41,7 @@
             name="favorite" 
             type="text" 
             placeholder="favorite"
+            value=<%= book.favorite %>
         />
     </div>
     <div class="book-from-item">
@@ -47,6 +51,7 @@
             name="fileCover" 
             type="text" 
             placeholder="fileCover"
+            value=<%= book.fileCover %>
         />
     </div>
     <div class="book-from-item">
@@ -56,6 +61,7 @@
             name="fileName" 
             type="text" 
             placeholder="filename"
+            value=<%= book.fileName %>
         />
     </div>
     <div class="book-from-item file-div">
