@@ -1,8 +1,8 @@
 
 const { v4: uuid } = require('uuid');
 const fs = require('fs');
-const os = require('os');
 const path = require('path');
+
 
 class Database {
     constructor(store) {
@@ -21,7 +21,14 @@ class Database {
         if (many || !targetId) {
             return this.bookStore;
         }
-        return this.bookStore.find((item) => item.id === targetId);
+        const targetBook = this.bookStore.find((item) => item.id === targetId);
+        this.getCounterValue(targetId)
+        .then((data) => {
+            const targetBook = this.bookStore.find((item) => item.id === targetId);
+            targetBook.counter = data;
+        })
+        return targetBook;
+        
     }
 
     createBook(data) {
@@ -33,6 +40,7 @@ class Database {
             favorite: data.favorite,
             fileCover: data.fileCover,
             fileName: data.fileName,
+            counter: 0,
             fileBook: data.fileBook ? data.fileBook : path.join(__dirname, '..', '/public/uploads/book_holder.png')
         };
         this.bookStore.push(book);
@@ -84,6 +92,49 @@ class Database {
                 if(err) throw err;
             });
         }
+    }
+    getCounterValue(id, incr=false) {
+        let counterUrl = `${process.env.COUNTER_BACKEND_URL}/counter/${id}/`;
+        let methodCounter = 'GET';
+        if (incr) {
+            counterUrl = `${process.env.COUNTER_BACKEND_URL}/counter/${id}/incr`;
+            methodCounter = 'POST';
+        }
+        try {
+            return new Promise((resolve, reject) => {
+                fetch(`${counterUrl}`, {
+                    method: methodCounter,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data && data.counter) {
+                        return resolve(data.counter)
+                    }
+                })
+            });
+        }
+        catch(err) {
+            console.log(err);
+        }
+        
+        
+    }
+    incrCounterValue(id) {
+        return new Promise((resolve, reject) => {
+            fetch(`${process.env.COUNTER_BACKEND_URL}/counter/${id}/incr`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                return resolve(data.counter)
+            })
+        });
     }
 }
 
