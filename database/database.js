@@ -18,17 +18,18 @@ class Database {
     }
     
     getBooks(many=true, targetId) {
+        const targetBook = this.bookStore.find((item) => item.id === targetId);
+
         if (many || !targetId) {
             return this.bookStore;
         }
-        const targetBook = this.bookStore.find((item) => item.id === targetId);
-        this.getCounterValue(targetId)
-        .then((data) => {
-            const targetBook = this.bookStore.find((item) => item.id === targetId);
-            targetBook.counter = data;
-        })
-        return targetBook;
-        
+        else if (targetBook) {
+            this.getCounterValue(targetId).then((data) => {
+                const targetBook = this.bookStore.find((item) => item.id === targetId);
+                targetBook.counter = data;
+            });
+            return targetBook;
+        }
     }
 
     createBook(data) {

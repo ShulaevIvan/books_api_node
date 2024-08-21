@@ -69,6 +69,7 @@ router.get('/view/:id', async (req, res) => {
         res.render('books/view', { book: targetBook });
     }
     catch(err) {
+        res.redirect('/');
         res.send(err);
     }
     
