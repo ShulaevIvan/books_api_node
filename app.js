@@ -1,12 +1,10 @@
 const env = require('dotenv').config();
 const express = require('express');
-const multer  = require("multer");
 const cors = require('cors');
-const os = require('os');
 const path = require('path');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
-const HOST = os.networkInterfaces().lo[0].address;
+const HOST = process.env.HOST || 'localhost';
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
 
@@ -23,4 +21,4 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/', booksRouter);
 app.listen(PORT);
-console.log(`server started at: \n http://${HOST}:${PORT} \n http://localhost:${PORT}`);
+console.log(`server started at: \n http://${HOST}:${PORT}`);

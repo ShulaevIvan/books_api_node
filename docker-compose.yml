@@ -1,0 +1,35 @@
+services:
+    node_book_api:
+        image: shulaevivan/node_book_api
+        hostname: node_book_api
+        working_dir: /app
+        ports:
+            - '3000:3000'
+        environment:
+            - PORT=3000
+            - HOST=localhost
+            - COUNTER_BACKEND_URL=http://node_book_counter:3001
+        depends_on:
+            - node_book_api_counter
+        networks:
+            - appnet
+        command: npm run start
+    node_book_api_counter:
+        image: shulaevivan/node_book_api_counter
+        hostname: node_book_counter
+        working_dir: /app
+        volumes:
+            - ./counterData/:/app/counterData
+        ports:
+            - '3001:3001'
+        environment:
+            - PORT=3001
+            - HOST=node_book_counter
+        networks:
+            - appnet
+        command: npm run start
+networks:
+    appnet:
+        name: appnet
+        driver: bridge
+        

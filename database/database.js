@@ -115,6 +115,7 @@ class Database {
                         return resolve(data.counter)
                     }
                 })
+                .catch((err) => console.log(`'counter server err ip: ${process.env.COUNTER_BACKEND_URL}}' ${err}`));
             });
         }
         catch(err) {
