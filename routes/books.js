@@ -63,14 +63,10 @@ router.get('/delete/:id', async (req, res) => {
 });
 
 router.get('/view/:id', async (req, res) => {
-    try {
-        const targetId = req.params.id;
-        const targetBook = await database.getBooks(many=false, targetId);
-        res.render('books/view', { book: targetBook });
-    }
-    catch(err) {
-        res.send(err);
-    }
+
+    const targetId = req.params.id;
+    const targetBook = database.getBooks(many=false, targetId);
+    res.render('books/view', { book: targetBook });
     
 });
 

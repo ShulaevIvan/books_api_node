@@ -23,13 +23,17 @@ class Database {
         if (many || !targetId) {
             return this.bookStore;
         }
-        else if (targetBook) {
-            this.getCounterValue(targetId).then((data) => {
-                const targetBook = this.bookStore.find((item) => item.id === targetId);
-                targetBook.counter = data;
-            });
-            return targetBook;
-        }
+
+        this.getCounterValue(targetId).then((data) => {
+            let targetBook = this.bookStore.find((item) => item.id === targetId);
+            targetBook = {
+                ...targetBook,
+                counter: data
+            }
+            this.bookStore = [...this.bookStore.filter((book) => book.id !== targetId), targetBook];
+        });
+        return targetBook;
+        
     }
 
     createBook(data) {

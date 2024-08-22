@@ -21,4 +21,4 @@ app.use(bodyParser.json());
 app.use('/', indexRouter);
 app.use('/', booksRouter);
 app.listen(PORT);
-console.log(`server started at: \n http://${HOST}:${PORT}`);
+console.log(`server started at: \n ${HOST}:${PORT}`);
